@@ -1,6 +1,17 @@
 #!/bin/bash
 set -euo pipefail
 
+# Ensure required tools are available
+if ! command -v shellcheck >/dev/null; then
+  echo "shellcheck is required but not installed." >&2
+  exit 1
+fi
+
+if ! command -v yamllint >/dev/null; then
+  echo "yamllint is required but not installed." >&2
+  exit 1
+fi
+
 echo "Running ShellCheck..."
 sh_files=$(git ls-files '*.sh')
 if [ -n "$sh_files" ]; then
