@@ -15,7 +15,7 @@ fi
 echo "Running ShellCheck..."
 sh_files=$(git ls-files '*.sh')
 if [ -n "$sh_files" ]; then
-  shellcheck $sh_files
+  shellcheck "$sh_files"
 else
   echo "No shell scripts to check."
 fi
