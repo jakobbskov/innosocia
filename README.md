@@ -63,15 +63,22 @@ The guide also covers optional topics such as log rotation, resource limits for 
 
 ## Using the `start` script
 
-The repository includes an executable `start` script. Run it to automate any
-custom tasks you add:
+The repository includes an executable `start` script that launches the Docker
+Compose stack. Run it with:
 
 ```bash
 ./start
 ```
 
-By default the script only prints a reminder that you should replace the
-placeholder with your own Docker Compose commands.
+The script checks that `docker` and `docker compose` (or `docker-compose`) are
+available and prints a helpful error if they are missing. When the requirements
+are met it executes:
+
+```bash
+docker compose up -d
+```
+
+You can extend the script with additional tasks as needed.
 
 ## Development dependencies
 
