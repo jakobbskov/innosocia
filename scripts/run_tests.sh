@@ -13,7 +13,7 @@ if ! command -v yamllint >/dev/null; then
 fi
 
 echo "Running ShellCheck..."
-mapfile -t sh_files < <(git ls-files '*.sh')
+mapfile -t sh_files < <(git ls-files '*.sh' start)
 if [ ${#sh_files[@]} -gt 0 ]; then
   shellcheck "${sh_files[@]}"
 else
