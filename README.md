@@ -1,4 +1,4 @@
-# Nextcloud version 3 on Raspberry Pi 4 (8 GB)
+# Nextcloud on Raspberry Pi 4 (8 GB)
 
 This repository provides a Docker based workflow for hosting Nextcloud on a Raspberry Pi 4 with 8 GB RAM.  The instructions summarize a production-ready setup inspired by the “version 3” guide referenced in the project description.
 
