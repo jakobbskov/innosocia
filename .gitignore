@@ -1,0 +1,43 @@
+# General ignores
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Node
+node_modules/
+.npm/
+
+# Compiled binaries
+*.o
+*.a
+*.so
+*.dll
+*.dylib
+*.out
+*.elf
+*.hex
+
+# Build directories
+build/
+dist/
+
+# IDEs and Editors
+.vscode/
+.idea/
+
+# Raspberry Pi
+.env
+
+# Nextcloud
+config/config.php
+data/
+nextcloud.log
