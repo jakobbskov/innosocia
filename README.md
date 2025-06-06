@@ -71,3 +71,8 @@ chmod +x start
 ```
 
 Currently the script is empty; modify it to fit your own deployment workflow (for example, to pull images and launch containers with Docker Compose).
+
+## License
+
+This project is released under the [MIT License](LICENSE).
+
