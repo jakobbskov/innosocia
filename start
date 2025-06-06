@@ -20,4 +20,4 @@ else
 fi
 
 echo "Starting containers..."
-$compose_cmd up -d
+$compose_cmd -f docker-compose.yml up -d

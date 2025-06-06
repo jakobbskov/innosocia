@@ -27,37 +27,8 @@ docker compose version
    ```bash
    docker network create -d bridge nextcloud_net
    ```
-2. **Database container** – run MariaDB with some InnoDB tuning. Mount a folder (or volume) for `/var/lib/mysql` and add a custom configuration file e.g.:
-   ```ini
-   # mariadb-conf.d/99-nextcloud.cnf
-   [mysqld]
-   innodb_buffer_pool_size = 1024M
-   innodb_flush_method = O_DIRECT
-   innodb_flush_log_at_trx_commit = 2
-   innodb_log_file_size = 256M
-   ```
-3. **Redis container** for caching and file locking:
-   ```bash
-   docker run -d --name nextcloud_redis --network nextcloud_net \
-      redis:7-alpine redis-server --appendonly no
-   ```
-4. **Nextcloud container** using the official Apache image. Connect it to `nextcloud_net` and supply the database credentials and trusted domain environment variables. Example compose snippet:
-   ```yaml
-   nextcloud:
-     image: nextcloud:27-apache
-     networks:
-       - nextcloud_net
-     environment:
-       - MYSQL_HOST=nextcloud_db
-       - MYSQL_DATABASE=nextcloud
-       - MYSQL_USER=nextcloud
-       - MYSQL_PASSWORD=<password>
-       - NEXTCLOUD_TRUSTED_DOMAINS=cloud.example.com
-     volumes:
-       - nextcloud_html:/var/www/html
-   ```
-5. **Nginx reverse proxy** – handle HTTPS for your domain and forward traffic to the Nextcloud container. Combine it with the official `certbot` image to obtain and renew Let's Encrypt certificates. Nginx serves the ACME challenge files from a shared volume and reloads when certificates are renewed.
-6. **Start the stack** via Docker Compose and browse to `https://cloud.example.com` to finish the initial Nextcloud installation.
+2. **Review `docker-compose.yml`** which defines services for Nextcloud (Apache), MariaDB, Redis and an optional Nginx reverse proxy. Adjust the passwords, domain names and volume locations to suit your environment.
+3. **Start the stack** with `./start` (or `docker compose -f docker-compose.yml up -d`) and browse to `https://cloud.example.com` to finish the installation.
 
 The guide also covers optional topics such as log rotation, resource limits for each container and using Btrfs snapshots for quick backups and upgrades. See the comments in the configuration files for further pointers.
 
