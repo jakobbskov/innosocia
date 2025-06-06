@@ -60,6 +60,15 @@ Install them via your package manager, for example:
 sudo apt-get install shellcheck yamllint
 ```
 
+## Running tests
+
+The `scripts/run_tests.sh` script performs ShellCheck and
+`yamllint` checks on the repository. Execute it with:
+
+```bash
+bash scripts/run_tests.sh
+```
+
 ## License
 
 This project is released under the [MIT License](LICENSE).
