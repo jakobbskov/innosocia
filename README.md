@@ -63,14 +63,15 @@ The guide also covers optional topics such as log rotation, resource limits for 
 
 ## Using the `start` script
 
-The repository includes a `start` script. Make it executable and run it to automate any custom tasks you add:
+The repository includes an executable `start` script. Run it to automate any
+custom tasks you add:
 
 ```bash
-chmod +x start
 ./start
 ```
 
-Currently the script is empty; modify it to fit your own deployment workflow (for example, to pull images and launch containers with Docker Compose).
+By default the script only prints a reminder that you should replace the
+placeholder with your own Docker Compose commands.
 
 ## Development dependencies
 
