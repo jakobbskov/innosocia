@@ -1,6 +1,23 @@
 #!/bin/bash
 # Helper script to start the Nextcloud stack
+set -euo pipefail
 
-echo "Placeholder: add your Docker Compose commands here"
-# For example:
-# docker compose up -d
+# Ensure Docker is available
+if ! command -v docker >/dev/null; then
+  echo "Docker is required but not installed." >&2
+  exit 1
+fi
+
+# Determine which Docker Compose command to use
+if docker compose version >/dev/null 2>&1; then
+  compose_cmd="docker compose"
+elif command -v docker-compose >/dev/null; then
+  compose_cmd="docker-compose"
+else
+  echo "Docker Compose is required but not installed." >&2
+  echo "Install Docker Compose v2 (docker compose) or docker-compose." >&2
+  exit 1
+fi
+
+echo "Starting containers..."
+$compose_cmd up -d
