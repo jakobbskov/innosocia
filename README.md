@@ -23,9 +23,11 @@ docker compose version
 
 ## Basic installation steps
 
-1. **Create a dedicated Docker network** so the containers can resolve each other by name:
+1. **Create the `nextcloud` Docker network** so the containers can resolve each
+   other by name. The Compose file treats this network as external, so run the
+   following command once:
    ```bash
-   docker network create -d bridge nextcloud_net
+   docker network create -d bridge nextcloud
    ```
 2. **Review `docker-compose.yml`** which defines services for Nextcloud (Apache), MariaDB, Redis and an optional Nginx reverse proxy. Adjust the passwords, domain names and volume locations to suit your environment.
 3. **Start the stack** with `./start` (or `docker compose -f docker-compose.yml up -d`) and browse to `https://cloud.example.com` to finish the installation.
