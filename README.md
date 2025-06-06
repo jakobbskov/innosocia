@@ -30,6 +30,11 @@ docker compose version
    docker network create -d bridge nextcloud
    ```
 2. **Review `docker-compose.yml`** which defines services for Nextcloud (Apache), MariaDB, Redis and an optional Nginx reverse proxy. Adjust the passwords, domain names and volume locations to suit your environment.
+
+   Before launching the stack you must replace the placeholder values for
+   credentials such as `MYSQL_ROOT_PASSWORD` with strong secrets. These
+   settings can also be provided via a `.env` file to avoid committing
+   sensitive values to version control.
 3. **Start the stack** with `./start` (or `docker compose -f docker-compose.yml up -d`) and browse to `https://cloud.example.com` to finish the installation.
 
 The guide also covers optional topics such as log rotation, resource limits for each container and using Btrfs snapshots for quick backups and upgrades. See the comments in the configuration files for further pointers.
