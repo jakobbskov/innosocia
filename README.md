@@ -72,6 +72,15 @@ chmod +x start
 
 Currently the script is empty; modify it to fit your own deployment workflow (for example, to pull images and launch containers with Docker Compose).
 
+## Development dependencies
+
+The `scripts/run_tests.sh` helper relies on `shellcheck` and `yamllint` for linting.
+Install them via your package manager, for example:
+
+```bash
+sudo apt-get install shellcheck yamllint
+```
+
 ## License
 
 This project is released under the [MIT License](LICENSE).
